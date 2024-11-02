@@ -1,31 +1,9 @@
-//  C:\\mingw64\\bin\\g++ -c main.cpp -DSFML_STATIC -I"C:\SFML-2.6.1\include" -o build/main.o
-//  C:\\mingw64\\bin\\g++ build/main.o -L"C:\SFML-2.6.1\lib" -static -static-libstdc++  -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32 -mwindows
-// Con nombre del ejecutable
-//  C:\\mingw64\\bin\\g++ build/main.o -o ejecutable -L"C:\SFML-2.6.1\lib" -static -static-libstdc++  -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32 -mwindows
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <vector>
 #include <string>
 #include <iostream>
-
-// Clase Celda que contiene una matriz de 3x3 enteros
-class Celda {
-public:
-    int valores[3][3]; // Matriz de enteros de 3x3
-
-    Celda() {
-        // Inicializamos todos los valores en 0
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                valores[i][j] = 0;
-            }
-        }
-    }
-
-    int& obtenerValor(int fila, int columna) {
-        return valores[fila][columna];
-    }
-};
+#include "celda.cpp"
 
 int main() {
     const int gridSize = 9;      // Tamaño total de la cuadrícula 9x9
@@ -39,7 +17,7 @@ int main() {
 
     // Cargar fuente para mostrar texto en las celdas y el menú
     sf::Font font;
-    if (!font.loadFromFile("Arial.ttf")) {
+    if (!font.loadFromFile("resources/Arial.ttf")) {
         std::cerr << "No se pudo cargar la fuente Arial.ttf" << std::endl;
         return -1;
     }
@@ -49,6 +27,7 @@ int main() {
     sf::Text loadGameText("Cargar", font, 20);
     sf::Text solveText("Solucionar", font, 20);
     
+    // Asegúrate de que estén dentro del ancho visible de la ventana
     newGameText.setPosition(windowWidth - 180, 50);
     loadGameText.setPosition(windowWidth - 180, 100);
     solveText.setPosition(windowWidth - 180, 150);
@@ -61,7 +40,7 @@ int main() {
             cells[i][j].setPosition(j * cellSize, i * cellSize);           // Posición en la cuadrícula
             cells[i][j].setFillColor(sf::Color::White);
             cells[i][j].setOutlineThickness(1);
-            cells[i][j].setOutlineColor(sf::Color::Black);
+            cells[i][j].setOutlineColor(sf::Color::Red);
         }
     }
 
