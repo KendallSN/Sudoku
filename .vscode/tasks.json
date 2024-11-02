@@ -1,42 +1,12 @@
-// .vscode/tasks.json
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "build",
-            "type": "shell",
-            "command": "C:\\mingw64\\bin\\g++",
-            "args": [
-                "-c", "main.cpp",
-                "-DSFML_STATIC",
-                "-I", "C:\\SFML-2.6.1\\include",
-                "-o", "build/main.o"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": ["$gcc"],
-            "detail": "Compila el archivo main.cpp a un objeto .o"
-        },
-        {
-            "label": "link",
-            "type": "shell",
-            "command": "C:\\mingw64\\bin\\g++",
-            "args": [
-                "build/main.o",
-                "-o", "ejecutable",
-                "-L", "C:\\SFML-2.6.1\\lib",
-                "-static", "-static-libstdc++",
-                "-lsfml-graphics-s", "-lsfml-window-s", "-lsfml-system-s",
-                "-lopengl32", "-lfreetype", "-lwinmm", "-lgdi32", "-mwindows"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": ["$gcc"],
-            "detail": "Vincula el archivo objeto y genera el ejecutable"
-        }
+      {
+        "label": "Compilar y ejecutar",
+        "type": "shell",
+        "command": "C:\\mingw64\\bin\\g++ -c main.cpp -DSFML_STATIC -I\"C:\\SFML-2.6.1\\include\" -o build/main.o ; C:\\mingw64\\bin\\g++ build/main.o -o ejecutable -L\"C:\\SFML-2.6.1\\lib\" -static -static-libstdc++ -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32 -mwindows",
+        "problemMatcher": []
+      }
     ]
-}
+  }
+  
