@@ -1,0 +1,14 @@
+Aplicación desarrollada por Kendall Salazar Navarro y Joselyn Morales Román
+
+Para compilar el codigo en Visual Estudio Code:
+1- Extraiga los comprimidos de la carpeta util 
+2- Coloque en la raiz del disco local C las carpetas "SFML-2.6.1" y "mingw64" que venian dentro de los comprimidos
+3- Escriba y ejecute los siguentes dos comandos en orden (en una terminar ubicada en la carpeta raiz del proyecto)
+
+C:\\mingw64\\bin\\g++ -c main.cpp -DSFML_STATIC -I"C:\SFML-2.6.1\include" -o build/main.o
+
+C:\\mingw64\\bin\\g++ build/main.o -o ejecutable -L"C:\SFML-2.6.1\lib" -static -static-libstdc++  -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32 -mwindows
+
+Para ejecutar de doble clic en el ejecutable de nombre "ejecutable" o escriba y ejecute el siguiente comando ( Requiere que el ejecutable este en el mismo lugar que la carpeta resources)
+
+.\ejecutable
